@@ -1,11 +1,549 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Huy Hoàng | Senior Full-Stack Developer & Chuyên Gia Chuyển Đổi Số</title>
+  <meta name="description" content="CV chuyên nghiệp của Nguyễn Huy Hoàng - Senior Full-Stack Developer & Chuyên Gia Giải Pháp Chuyển Đổi Số. 3+ năm kinh nghiệm xây dựng hệ thống web hiệu năng cao.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    hello world
+
+  <!-- Ambient Background Lighting -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="cv-container">
+    <!-- Top Floating Actions Bar -->
+    <header class="action-bar">
+      <button class="btn-action" id="themeToggle" title="Chuyển đổi giao diện Sáng / Tối" aria-label="Đổi giao diện">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <span id="themeText">Giao diện</span>
+      </button>
+
+      <button class="btn-action" id="copyEmailBtn" onclick="copyEmail()" title="Sao chép địa chỉ Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span>Copy Email</span>
+      </button>
+
+      <button class="btn-action btn-primary" onclick="window.print()" title="In CV hoặc lưu file PDF">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Xuất CV (PDF)</span>
+      </button>
+    </header>
+
+    <!-- Main Hero Profile Card -->
+    <section class="hero-card">
+      <div class="avatar-wrapper">
+        <div class="avatar-glow"></div>
+        <img src="avatar.jpg" alt="Chân dung Nguyễn Huy Hoàng" class="avatar-img" width="190" height="190">
+        <div class="status-badge" title="Sẵn sàng nhận dự án mới">
+          <span class="pulse-dot"></span>
+          <span>Open for Work</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-name">
+          <span class="gradient-text">Nguyễn Huy Hoàng</span>
+        </h1>
+        <div class="hero-title">
+          <span>Senior Full-Stack Developer</span>
+          <span class="badge-tag">Chuyển Đổi Số</span>
+        </div>
+
+        <ul class="hero-meta-list">
+          <li class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Hà Nội, Việt Nam</span>
+          </li>
+          <li>
+            <a href="mailto:hoang01012005@gmail.com" class="hero-meta-item" id="userEmailLink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>hoang01012005@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+84987654321" class="hero-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>(+84) 987 654 321</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Hoang01012005" target="_blank" rel="noopener noreferrer" class="hero-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              <span>github.com/Hoang01012005</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="mailto:hoang01012005@gmail.com" class="btn-action btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            <span>Liên hệ công việc</span>
+          </a>
+          <a href="#projects" class="btn-action">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <span>Xem các dự án</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Impact Stats -->
+    <section class="stats-grid" aria-label="Thống kê nổi bật">
+      <div class="stat-card">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Năm Kinh Nghiệm</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Dự Án Hoàn Thành</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Độ Tin Cậy Hệ Thống</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Cam Kết Tiến Độ</div>
+      </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="main-grid">
+      <!-- Left Column: Primary Experience & Projects -->
+      <div class="content-left">
+        <!-- About Me Card -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Giới Thiệu Bản Thân</span>
+            </h2>
+          </header>
+          <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.75;">
+            Lập trình viên Full-Stack đầy nhiệt huyết với tư duy kiến trúc sản phẩm hiện đại và đam mê giải pháp <strong>Chuyển đổi số</strong> cho doanh nghiệp. Có thế mạnh sâu sắc trong việc xây dựng các ứng dụng web tốc độ cao, khả năng mở rộng tốt (Scalability), tối ưu hóa trải nghiệm người dùng (UX) và tự động hóa quy trình nghiệp vụ với Cloud & AI. Luôn chủ động, cập nhật công nghệ mới và tập trung vào hiệu quả kinh doanh thực tế của sản phẩm.
+          </p>
+        </article>
+
+        <!-- Work Experience Timeline -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              <span>Kinh Nghiệm Làm Việc</span>
+            </h2>
+          </header>
+
+          <div class="timeline">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-role">
+                <span>Senior Full-Stack & Solutions Engineer</span>
+                <span class="timeline-time">2024 - Hiện tại</span>
+              </div>
+              <div class="timeline-company">Global Digital Solution Inc.</div>
+              <ul class="timeline-bullets">
+                <li>Chủ trì thiết kế kiến trúc và phát triển hệ sinh thái phần mềm SaaS chuyển đổi số cho hơn 50.000 người dùng tích cực hàng tháng.</li>
+                <li>Tối ưu hóa Core Web Vitals và kiến trúc serverless trên Cloudflare Workers/Pages, giảm 65% thời gian phản hồi (TTFB &lt; 80ms).</li>
+                <li>Xây dựng pipeline CI/CD tự động hoá kiểm thử, build và triển khai không gián đoạn (Zero Downtime Deployment).</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">React / Next.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Cloudflare</span>
+                <span class="tag">Docker</span>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-role">
+                <span>Web Developer & Digital Specialist</span>
+                <span class="timeline-time">2022 - 2024</span>
+              </div>
+              <div class="timeline-company">NextGen Tech Solutions</div>
+              <ul class="timeline-bullets">
+                <li>Phát triển các hệ thống quản lý doanh nghiệp (ERP, CRM) và cổng thông tin điện tử tích hợp chữ ký số và bảo mật phân quyền đa cấp.</li>
+                <li>Tích hợp các cổng thanh toán điện tử hàng đầu (VNPay, MoMo, Stripe) với độ chính xác và an toàn dữ liệu 99.99%.</li>
+                <li>Phối hợp cùng nhóm thiết kế Product/UX để hiện thực hóa giao diện chuẩn Design System, thân thiện trên mọi thiết bị.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">JavaScript (ES6+)</span>
+                <span class="tag">RESTful API</span>
+                <span class="tag">TailwindCSS</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">Redis</span>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-role">
+                <span>Frontend Developer</span>
+                <span class="timeline-time">2021 - 2022</span>
+              </div>
+              <div class="timeline-company">Creatix Digital Agency</div>
+              <ul class="timeline-bullets">
+                <li>Xây dựng hơn 20+ website thương mại điện tử, Landing Page chuẩn SEO và Dashboard quản trị dữ liệu trực quan.</li>
+                <li>Đảm bảo chuẩn tương thích chéo trình duyệt (Cross-browser compatibility) và tuân thủ các nguyên tắc thiết kế Responsive Mobile-First.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="tag">HTML5 / SCSS</span>
+                <span class="tag">Vue.js / React</span>
+                <span class="tag">Git</span>
+                <span class="tag">SEO Audit</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Featured Projects Section -->
+        <article class="section-card" id="projects">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Dự Án Nổi Bật</span>
+            </h2>
+          </header>
+
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="project-header">
+                <div>
+                  <h3 class="project-title">Enterprise Digital Transformation Platform</h3>
+                  <span class="badge-tag" style="margin-top: 4px; display: inline-block;">Hệ thống lõi</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/Hoang01012005/Chuyendoiso" target="_blank" rel="noopener noreferrer" class="project-link" title="Xem GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <a href="#" class="project-link" title="Xem Live Demo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+              <p class="project-desc">
+                Nền tảng số hoá quy trình hồ sơ công việc, phê duyệt trực tuyến và báo cáo thống kê dữ liệu trực quan theo thời gian thực cho doanh nghiệp. Giúp cắt giảm 70% thời gian xử lý thủ công.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Cloudflare Pages</span>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-header">
+                <div>
+                  <h3 class="project-title">Smart Analytics & Automation Hub</h3>
+                  <span class="badge-tag" style="margin-top: 4px; display: inline-block;">AI & Phân Tích</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/Hoang01012005" target="_blank" rel="noopener noreferrer" class="project-link" title="Xem GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <a href="#" class="project-link" title="Xem Live Demo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+              <p class="project-desc">
+                Hệ thống thu thập dữ liệu đa nguồn, vẽ biểu đồ phân tích xu hướng kinh doanh và tích hợp trợ lý AI tự động trích xuất insight quan trọng từ các báo cáo tài chính.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">Python / FastAPI</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">Chart.js</span>
+                <span class="tag">OpenAI API</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Right Column: Skills, Education, Certs & Languages -->
+      <aside class="content-right">
+        <!-- Tech Skills Card -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>Kỹ Năng Kỹ Thuật</span>
+            </h2>
+          </header>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Frontend
+            </h3>
+            <div class="skill-list">
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>HTML5 / CSS3 / SCSS</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 95%;"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>JavaScript (ES6+) / TypeScript</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>React.js / Next.js</span>
+                  <span>88%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              Backend & Database
+            </h3>
+            <div class="skill-list">
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>Node.js / Express</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 85%;"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>PostgreSQL / MongoDB / Redis</span>
+                  <span>82%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 82%;"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>RESTful API / Microservices</span>
+                  <span>88%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+              Cloud & DevOps
+            </h3>
+            <div class="skill-list">
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>Cloudflare (Pages / Workers / DNS)</span>
+                  <span>92%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 92%;"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-info">
+                  <span>Git / GitHub Actions CI/CD</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-progress"><div class="skill-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Education Card -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <span>Học Vấn</span>
+            </h2>
+          </header>
+
+          <div class="sidebar-item">
+            <h3 class="sidebar-item-title">Kỹ Sư Công Nghệ Thông Tin</h3>
+            <div class="sidebar-item-sub">Đại Học Bách Khoa / ĐHQG</div>
+            <div class="sidebar-item-date">2023 - 2027 • Tốt nghiệp loại Giỏi (GPA: 3.6/4.0)</div>
+          </div>
+        </article>
+
+        <!-- Certifications -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+              <span>Chứng Chỉ & Giải Thưởng</span>
+            </h2>
+          </header>
+
+          <div class="sidebar-item">
+            <h3 class="sidebar-item-title">Cloudflare Certified Professional</h3>
+            <div class="sidebar-item-sub">Cloudflare Ecosystem</div>
+            <div class="sidebar-item-date">2024</div>
+          </div>
+          <div class="sidebar-item">
+            <h3 class="sidebar-item-title">Meta Certified Front-End Developer</h3>
+            <div class="sidebar-item-sub">Coursera / Meta</div>
+            <div class="sidebar-item-date">2023</div>
+          </div>
+          <div class="sidebar-item">
+            <h3 class="sidebar-item-title">Giải Nhì Hackathon Chuyển Đổi Số</h3>
+            <div class="sidebar-item-sub">Tech Youth Innovation</div>
+            <div class="sidebar-item-date">2023</div>
+          </div>
+        </article>
+
+        <!-- Languages & Soft Skills -->
+        <article class="section-card">
+          <header class="section-header">
+            <h2 class="section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span>Ngoại Ngữ</span>
+            </h2>
+          </header>
+
+          <div class="lang-badge">
+            <span>Tiếng Việt</span>
+            <span class="lang-level">Bản Ngữ (Native)</span>
+          </div>
+          <div class="lang-badge">
+            <span>Tiếng Anh</span>
+            <span class="lang-level">IELTS 7.0 (Fluent)</span>
+          </div>
+        </article>
+      </aside>
+    </main>
+
+    <!-- Footer Call To Action -->
+    <footer class="footer-cta">
+      <h3>Sẵn Sàng Đồng Hành Cùng Dự Án Của Bạn</h3>
+      <p>Tôi luôn tìm kiếm các cơ hội hợp tác phát triển giải pháp phần mềm, chuyển đổi số và xây dựng sản phẩm chất lượng cao.</p>
+      <a href="mailto:hoang01012005@gmail.com" class="btn-action btn-primary" style="font-size: 1rem; padding: 12px 28px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Gửi Thư Trao Đổi Ngay</span>
+      </a>
+      <p style="margin-top: 24px; font-size: 0.8rem; color: var(--text-dim);">
+        © 2026 Nguyễn Huy Hoàng. Được thiết kế với HTML5 & CSS3 thuần. Sẵn sàng triển khai trên Cloudflare Pages.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast" role="status" aria-live="polite">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span id="toastMessage">Đã sao chép email vào bộ nhớ tạm!</span>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Theme Management with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('cv_theme', theme);
+      if (theme === 'light') {
+        themeText.textContent = 'Chế độ Tối';
+        themeIcon.innerHTML = `
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        `;
+      } else {
+        themeText.textContent = 'Chế độ Sáng';
+        themeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        `;
+      }
+    }
+
+    const savedTheme = localStorage.getItem('cv_theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    // Copy Email to Clipboard
+    function copyEmail() {
+      const email = 'hoang01012005@gmail.com';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => showToast('Đã sao chép: ' + email));
+      } else {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = email;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        showToast('Đã sao chép: ' + email);
+      }
+    }
+
+    // Toast Notification Handler
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
